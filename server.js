@@ -27,5 +27,8 @@ io.on("connection", socket => {
     socket.on(NEW_CHAT_MESSAGE_EVENT, data => io.in(roomName).emit(NEW_CHAT_MESSAGE_EVENT, data));
 
     // Leave the room if user closes the socket
-    socket.on("disconnect", () => socket.leave(roomName));
+    socket.on("disconnect", () => {
+        console.log("a user disconnected!")
+        socket.leave(roomName)
+    });
 });
